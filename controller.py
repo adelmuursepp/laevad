@@ -56,17 +56,20 @@ class Controller:
 
 
   def add_laev(self, pikkus):
-    self.view.naitaruudustikku(self.inimene)
+    self.view.naitaruudustikku(self.inimene, self.arvuti)
     for i in range(pikkus):
       place = self.view.ask_place(i+1)
       x,y = self.get_indeces(place)
       self.inimene[x][y]['laev'] = True
     self.inimeselaevad.append(pikkus)
-    self.view.naitaruudustikku(self.inimene)
+    self.view.naitaruudustikku(self.inimene, self.arvuti)
+
+  def mine_mangu(self):
+    self.genereeri_arvuti_laevad()
 
 
 
-
+  def genereeri_arvuti_laevad(self):
 
 
 

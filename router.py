@@ -11,7 +11,7 @@ class Router:
     print("\n")
     print("Mida sa soovid jargmisena teha?")
     print("1- Lisada laev")
-    print('2- Tee midagi muud')
+    print('2- Mine mangu')
     print('3- Lopeta mang')
 
 
@@ -25,6 +25,7 @@ class Router:
 
     elif action == 2:
       print('Sa tegid midagi muud')
+      self.controller.mine_mangu()
     elif action == 3:
       print('Sa lopetasid mangu')
       running = False
