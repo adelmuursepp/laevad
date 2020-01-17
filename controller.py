@@ -107,6 +107,9 @@ class Controller:
     x = letters.index(place[0])
     return(x, y)
 
+  
+   def prindimolemad(self):
+    self.view.naitaruudustikku(self.inimene, self.arvuti)
 
 
 
