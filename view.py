@@ -1,7 +1,7 @@
 class View:
 
   def ask_place(object, i):
-    print(f'Paiguta {i} laev. Vali ruudu asukoht kuhu soovid laeva paigutada (nt. A4)')
+    print(f'Vali {i} laeva ruut (nt. A4)')
     print('>>')
     return input()
 
@@ -53,19 +53,38 @@ class View:
 
     for rida in range(len(arvuti)):
       kuva2 += ' ' * (len(suurimarv) - len(str(rida + 1))) + str(rida + 1) + ' '  # loob vasakule poole numbritest tulba
+      # for ruut in arvuti[rida]:
+      #   if ruut['pomm'] is False:
+      #     if ruut['laev'] is False:
+      #       kuva2 += '. '
+      #     else:
+      #       kuva2 += '. '
+      #   else:
+      #     if ruut['laev'] is False:
+      #       kuva2 += '* '
+      #     else:
+      #       kuva2 += 'X '
+
+      # kuva2.strip()
+      # kuva2 += '\n'
+
       for ruut in arvuti[rida]:
         if ruut['pomm'] is False:
           if ruut['laev'] is False:
-            kuva2 += '. '
+            kuva1 += '. '
           else:
-            kuva2 += '. '
+            kuva1 += 'x '
         else:
           if ruut['laev'] is False:
-            kuva2 += '* '
+            kuva1 += '* '
           else:
-            kuva2 += 'X '
-
+            kuva1 += 'X '
       kuva2.strip()
       kuva2 += '\n'
 
     print(kuva1, kuva2)
+
+  def ask_pomm(self):
+    print(f'Vali ruut, mida soovid pommitada (nt. A4)')
+    print('>>')
+    return input()

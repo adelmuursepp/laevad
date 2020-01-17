@@ -1,9 +1,10 @@
+import random
 from view import View
 
 class Controller:
-  global i
+  global i, kuljepikkus
   i = 0
-
+  kuljepikkus = 10
   def __init__(self):
     self.view = View()
 
@@ -65,11 +66,48 @@ class Controller:
     self.view.naitaruudustikku(self.inimene, self.arvuti)
 
   def mine_mangu(self):
+    # tee arvutile laevad
     self.genereeri_arvuti_laevad()
+    # naita ruudustikku
+    self.view.naitaruudustikku(self.inimene, self.arvuti)
 
+    pommiruut = self.view.ask_pomm()
+    x,y = self.get_indeces(pommiruut)
+    self.arvuti[x][y]['pomm'] = True
+    # if self.arvuti[x][y]['laev'] == True: # Kui oli laev, siis naita korvalolevaid laeva ruute
+    #   self.uuri_umber(x,y)
+    self.view.naitaruudustikku(self.inimene, self.arvuti)
+
+  #def uuri_umber(self, x, y):
 
 
   def genereeri_arvuti_laevad(self):
+      self.inimeselaevad.sort()
+      self.inimeselaevad.reverse()
+
+      for laev in self.inimeselaevad:
+        punkt = [random.randint(0, kuljepikkus - 1), random.randint(0, kuljepikkus - 1)]
+        # oletame, et koordinaadid on [2; 3]
+
+        suund = random.randint(0, 1)
+        # suund = 0 => suund paremale
+        # suund = 1 => suund alla
+        counter = 1
+        if suund == 0:
+          for ruut in range(laev):
+            try:
+              if self.arvuti[punkt[0]][punkt[1] + ruut]['laev'] is False:
+                counter += 1
+              else:
+                self.genereeri_arvuti_laevad()
+            except IndexError:
+              self.genereeri_arvuti_laevad()
+
+          if counter == laev:
+            for ruut in range(laev):
+              print([punkt[0],punkt[1] + ruut])
+              self.arvuti[punkt[0]][punkt[1] + ruut]['laev'] = True
+
 
 
 

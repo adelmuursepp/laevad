@@ -24,7 +24,7 @@ class Router:
       self.controller.add_laev(pikkus)
 
     elif action == 2:
-      print('Sa tegid midagi muud')
+      print('Sa alustasid mangu')
       self.controller.mine_mangu()
     elif action == 3:
       print('Sa lopetasid mangu')
