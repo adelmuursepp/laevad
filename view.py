@@ -68,4 +68,4 @@ class View:
       kuva2.strip()
       kuva2 += '\n'
 
-    print(kuva1, kuva2)
+    print("Arvuti: \n", kuva1, "Inimene: \n", kuva2)
