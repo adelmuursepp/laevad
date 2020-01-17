@@ -19,13 +19,9 @@ class Router:
 
   def route_action(self, action):
     if action == 1:
-      self.controller.add_laev()
-      print('Sa lisasid ruudu')
-      print('Vajuta 1, kui soovid laevale lisada ruudu')
-      print('Vajuta 2, kui ei soovi laevale ruutu lisada')
-      veelruute = int(input())
-      if veelruute == 1:
-        self.route_action(1)
+      print('Kui pikka laeva sa soovid lisada?')
+      pikkus = int(input())
+      self.controller.add_laev(pikkus)
 
     elif action == 2:
       print('Sa tegid midagi muud')
