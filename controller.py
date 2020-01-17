@@ -82,11 +82,12 @@ class Controller:
 
 
   def genereeri_arvuti_laevad(self):
+
       self.inimeselaevad.sort()
       self.inimeselaevad.reverse()
 
       for laev in self.inimeselaevad:
-        punkt = [random.randint(0, kuljepikkus - 1), random.randint(0, kuljepikkus - 1)]
+        punkt = [random.randint(0, kuljepikkus - 1), random.randint(0, kuljepikkus - 1)] # tootab ainult kui on uks laev!
         # oletame, et koordinaadid on [2; 3]
 
         suund = random.randint(0, 1)
@@ -103,51 +104,39 @@ class Controller:
             except IndexError:
               self.genereeri_arvuti_laevad()
 
-          if counter == laev:
-            for ruut in range(laev):
-              print([punkt[0],punkt[1] + ruut])
-              self.arvuti[punkt[0]][punkt[1] + ruut]['laev'] = True
-
-
-  
-  
-    def genereeri_arvuti_laevad(self):
-    self.inimeselaevad.sort()
-    self.inimeselaevad.reverse()
-
-    for laev in self.inimeselaevad:
-      punkt = [random.randint(0, kuljepikkus - 1), random.randint(0, kuljepikkus - 1)]
-      # oletame, et koordinaadid on [2; 3]
-
-      suund = random.randint(0, 1)
-      # suund = 0 => suund paremale
-      # suund = 1 => suund alla
-      counter = 1
-      if suund == 0:
-        for ruut in range(laev):
-          try:
-            if self.inimene[punkt[0]][punkt[1] + ruut]['laev'] is False:
+            if counter == laev:
+              for ruut in range(laev):
+                self.arvuti[punkt[0]][punkt[1] + ruut]['laev'] = True
               counter += 1
-            else:
-              self.genereeri_arvuti_laevad()
-          except IndexError:
-            self.genereeri_arvuti_laevad()
 
-        if counter == laev:
+        if suund == 1:
           for ruut in range(laev):
-            self.inimene[punkt[0]][punkt[1] + ruut]['laev'] = True
+            try:
+              if self.arvuti[punkt[0]+ruut][punkt[1]]['laev'] is False:
+                counter += 1
+              else:
+                self.genereeri_arvuti_laevad()
+            except IndexError:
+              self.genereeri_arvuti_laevad()
 
-            
-            
+            if counter == laev:
+              for ruut in range(laev):
+                print([punkt[0],punkt[1] + ruut])
+                self.arvuti[punkt[0]][punkt[1] + ruut]['laev'] = True
+              counter += 1
+
+
+
+
   def get_indeces(self,place):
     y = int(place[1])
     letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'I']
     x = letters.index(place[0])
     return(x, y)
 
-  
-   def prindimolemad(self):
-    self.view.naitaruudustikku(self.inimene, self.arvuti)
+
+  def prindimolemad(self):
+    self.view.ajutisedruudud(self.inimene, self.arvuti)
 
 
 

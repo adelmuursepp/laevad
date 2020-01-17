@@ -70,13 +70,13 @@ class View:
 
     print("Arvuti: \n", kuva1, "Inimene: \n", kuva2)
 
-    def ask_pomm(self):
+  def ask_pomm(self):
       print(f'Vali ruut, mida soovid pommitada (nt. A4)')
       print('>>')
       return input()
 
 
-    def ajutisedruudud(self, inimene, arvuti):
+  def ajutisedruudud(self, inimene, arvuti):
         # "." tähendab tühja teadmata ruutu
         # "x" tähendab põhja laskmata laeva
         # "X" tähendab põhja lastud ruutu
