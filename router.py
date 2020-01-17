@@ -13,6 +13,7 @@ class Router:
     print("1- Lisada laev")
     print('2- Mine mangu')
     print('3- Lopeta mang')
+    print('9- prindi molemad ruudustikud')
 
 
 
@@ -30,6 +31,8 @@ class Router:
       print('Sa lopetasid mangu')
       running = False
       print(running)
+    elif action == 9:
+      self.controller.prindimolemad()
 
 
   def run(self):
