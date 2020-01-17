@@ -20,7 +20,13 @@ class Router:
   def route_action(self, action):
     if action == 1:
       self.controller.add_laev()
-      print('Sa lisasid laeva')
+      print('Sa lisasid ruudu')
+      print('Vajuta 1, kui soovid laevale lisada ruudu')
+      print('Vajuta 2, kui ei soovi laevale ruutu lisada')
+      veelruute = int(input())
+      if veelruute == 1:
+        self.route_action(1)
+
     elif action == 2:
       print('Sa tegid midagi muud')
     elif action == 3:
@@ -31,8 +37,6 @@ class Router:
 
   def run(self):
     print("Tere tulemast mangu")
-    print('Mitu laeva soovid paigutada 10*10 ruudustikku?')
-    laevad = int(input())
     print('\n')
     while running:
       self.display_tasks()
