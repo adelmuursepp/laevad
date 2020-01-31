@@ -142,10 +142,31 @@ class Controller:
   def arvutipommitab(self):
       pommiruut = self.view.ask_pomm()
       x,y = self.get_indeces(pommiruut)
-      self.arvuti[x][y]['pomm'] = True
+      self.inimene[x][y]['pomm'] = True
       self.view.naitaruudustikku(self.inimene, self.arvuti)
 
-      if self.arvuti[x][y]['laev'] == True:
+      if self.inimene[x][y]['laev'] == True:
+        pos1 = [max(0, x-1), y]
+        pos2 = [min(10, x+1), y]
+        pos3 = [x, max(0, y-1)]
+        pos4 = [x, min(10, y+1)]
+        positions = [pos1, pos2, pos3, pos4] # korvalolevad laevad, mida peab kontrollima
+
+        for pos in positions:
+          if self.inimene[pos[0]][pos[1]]['laev'] == False:
+            self.inimene[pos[0]][pos[1]]['pomm'] = True
+
+        pos5 = [max(0, x-1), max(0, y-1)]
+        pos6 = [min(10, x+1), min(10, y+1)]
+        pos7 = [min(10, x+1), max(0, y-1)]
+        pos8 = [max(0, x-1), min(10, y+1)]
+
+        positions2 = [pos5, pos6, pos7, pos8] # diagonaalis olevad laevad
+
+        for pos in positions2:
+          self.inimene[pos[0]][pos[1]]['pomm'] == True
+
+
         self.inimenepommitab()
 
   def inimenepommitab(self):
@@ -155,8 +176,27 @@ class Controller:
       self.view.naitaruudustikku(self.inimene, self.arvuti)
 
       if self.arvuti[x][y]['laev'] == True:
-        x1 = max(0, x-1)
-        x2 = min(10, x+1)
+        pos1 = [max(0, x-1), y]
+        pos2 = [min(10, x+1), y]
+        pos3 = [x, max(0, y-1)]
+        pos4 = [x, min(10, y+1)]
+        positions = [pos1, pos2, pos3, pos4] # korvalolevad laevad, mida peab kontrollima
+
+        for pos in positions:
+          if self.arvuti[pos[0]][pos[1]]['laev'] == False:
+            self.arvuti[pos[0]][pos[1]]['pomm'] = True
+
+        pos5 = [max(0, x-1), max(0, y-1)]
+        pos6 = [min(10, x+1), min(10, y+1)]
+        pos7 = [min(10, x+1), max(0, y-1)]
+        pos8 = [max(0, x-1), min(10, y+1)]
+
+        positions2 = [pos5, pos6, pos7, pos8] # diagonaalis olevad laevad
+
+        for pos in positions2:
+          self.arvuti[pos[0]][pos[1]]['pomm'] == True
+
+
         self.inimenepommitab()
 
 
