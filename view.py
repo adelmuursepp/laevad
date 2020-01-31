@@ -83,6 +83,7 @@ class View:
         # "*" mööda lastud ruutu
         # --> tähed A, B, C, ...
         # ülevalt alla numbrid 1, 2, 3, ...
+        print('inimene')
         kuva1 = ''
         suurimarv = str(len(inimene) + 1)  # näitab suurima kohanumbriga rea numbrit
 
@@ -110,9 +111,10 @@ class View:
           kuva1.strip()
           kuva1 += '\n'
 
-
+        print('\n')
 
         # siit algab arvuti ruudustiku loomine
+        print('arvuti ')
 
         kuva2 = ''
         suurimarv = str(len(arvuti) + 1)  # näitab suurima kohanumbriga rea numbrit
@@ -141,5 +143,5 @@ class View:
           kuva2.strip()
           kuva2 += '\n'
 
-        print(kuva1, kuva2)
+        print("inimene\n",kuva1,"arvuti\n", kuva2)
 

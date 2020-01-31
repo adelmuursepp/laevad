@@ -65,19 +65,20 @@ class Controller:
     self.inimeselaevad.append(pikkus)
     self.view.naitaruudustikku(self.inimene, self.arvuti)
 
+
   def mine_mangu(self):
     # tee arvutile laevad
     self.genereeri_arvuti_laevad()
     # naita ruudustikku
     self.view.naitaruudustikku(self.inimene, self.arvuti)
+    running = True
 
-    pommiruut = self.view.ask_pomm()
-    x,y = self.get_indeces(pommiruut)
-    self.arvuti[x][y]['pomm'] = True
+    # inimene pommitab
+    while running == True:
+      self.inimenepommitab()
     # if self.arvuti[x][y]['laev'] == True: # Kui oli laev, siis naita korvalolevaid laeva ruute
     #   self.uuri_umber(x,y)
-    self.view.naitaruudustikku(self.inimene, self.arvuti)
-
+      self.arvutipommitab()
   #def uuri_umber(self, x, y):
 
 
@@ -125,14 +126,31 @@ class Controller:
                 self.arvuti[punkt[0]][punkt[1] + ruut]['laev'] = True
               counter += 1
 
+  def arvutipommitab(self):
+      pommiruut = self.view.ask_pomm()
+      x,y = self.get_indeces(pommiruut)
+      self.arvuti[x][y]['pomm'] = True
+      self.view.naitaruudustikku(self.inimene, self.arvuti)
 
+      if self.arvuti[x][y]['laev'] == True:
+        self.inimenepommitab()
+
+  def inimenepommitab(self):
+      pommiruut = self.view.ask_pomm()
+      x,y = self.get_indeces(pommiruut)
+      self.arvuti[x][y]['pomm'] = True
+      self.view.naitaruudustikku(self.inimene, self.arvuti)
+
+      if self.arvuti[x][y]['laev'] == True:
+
+        self.inimenepommitab()
 
 
   def get_indeces(self,place):
-    y = int(place[1])
-    letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'I']
+    y = int(place[1])-1
+    letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
     x = letters.index(place[0])
-    return(x, y)
+    return( y,x)
 
 
   def prindimolemad(self):
