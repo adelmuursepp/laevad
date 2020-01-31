@@ -66,7 +66,8 @@ class Controller:
 
     self.inimeselaevad = []
 
-
+    global i_tervedlaevad  # naitab, mitu ruutu inimese ruudustikus on kaetud tervete laevadega
+    i_tervedlaevad = 0
 
   def add_laev(self, pikkus):
     self.view.naitaruudustikku(self.inimene, self.arvuti)
@@ -94,6 +95,8 @@ class Controller:
 
   #def uuri_umber(self, x, y):
 
+  global a_tervedlaevad
+  a_tervedlaevad = 0 # naitab, mitu ruutu arvuti ruudustikus on kaetud tervete laevadega
 
   def genereeri_arvuti_laevad(self):
 
@@ -144,8 +147,11 @@ class Controller:
       x,y = self.get_indeces(pommiruut)
       self.inimene[x][y]['pomm'] = True
       self.view.naitaruudustikku(self.inimene, self.arvuti)
+      if self.arvuti[x][y]['laev'] == True:
+        i_tervedlaevad -= 1
 
       if self.inimene[x][y]['laev'] == True:
+        i_tervedlaevad -= 1
         pos1 = [max(0, x-1), y]
         pos2 = [min(10, x+1), y]
         pos3 = [x, max(0, y-1)]
@@ -176,6 +182,7 @@ class Controller:
       self.view.naitaruudustikku(self.inimene, self.arvuti)
 
       if self.arvuti[x][y]['laev'] == True:
+        a_tervedlaevad -= 1
         pos1 = [max(0, x-1), y]
         pos2 = [min(10, x+1), y]
         pos3 = [x, max(0, y-1)]
@@ -196,7 +203,6 @@ class Controller:
         for pos in positions2:
           self.arvuti[pos[0]][pos[1]]['pomm'] == True
 
-
         self.inimenepommitab()
 
 
@@ -209,13 +215,4 @@ class Controller:
 
   def prindimolemad(self):
     self.view.ajutisedruudud(self.inimene, self.arvuti)
-
-
-
-
-
-
-
-
-
 
