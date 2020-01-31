@@ -68,7 +68,7 @@ class View:
       kuva2.strip()
       kuva2 += '\n'
 
-    print("Arvuti: \n", kuva1, "Inimene: \n", kuva2)
+    print("Inimene: \n", kuva1, "Arvuti: \n", kuva2)
 
   def ask_pomm(self):
       print(f'Vali ruut, mida soovid pommitada (nt. A4)')
