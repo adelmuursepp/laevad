@@ -85,13 +85,23 @@ class Controller:
     # naita ruudustikku
     self.view.naitaruudustikku(self.inimene, self.arvuti)
     mang_labi = False
-
+ 
+    
     # inimene pommitab
     while mang_labi == False:
-      self.inimenepommitab()
+      self.inimenepommitab()      
+      if a_tervedlaevad == 0:
+        mang_labi = True
+      elif i_tervedlaevad == 0:
+        mang_labi = True
+      
     # if self.arvuti[x][y]['laev'] == True: # Kui oli laev, siis naita korvalolevaid laeva ruute
     #   self.uuri_umber(x,y)
       self.arvutipommitab()
+      if a_tervedlaevad == 0:
+        mang_labi = True
+      elif i_tervedlaevad == 0:
+        mang_labi = True
 
   #def uuri_umber(self, x, y):
 
