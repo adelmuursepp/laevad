@@ -6,9 +6,21 @@ class Controller:
   i = 0
   kuljepikkus = 10
   def __init__(self):
-    self.view = View()
-
-    self.arvuti = [ [{'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False} , {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False},
+    self.view = View()    
+    
+    self.arvuti = []
+    self.inimene = []
+    
+    for i in range(kuljepikkus): # loob inimese ja arvuti mänguväljade ühe dimensiooni
+      self.arvuti.append([])
+      self.inimene.append([])
+      
+      for j in range(kuljepikkus): # loob inimese ja arvuti mänguväljade teise dimensiooni
+        self.arvuti[i].append({'pomm': False, 'laev': False})
+        self.inimene[i].append({'pomm': False, 'laev': False})
+        
+        
+    '''self.arvuti = [ [{'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False} , {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False},
     {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False} , {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}],
     [{'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False} , {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False},
     {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}],
@@ -50,7 +62,7 @@ class Controller:
     {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False} , {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}],
     [{'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False} , {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False},
     {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False} , {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}]
-    ]
+    ]'''
 
     self.inimeselaevad = []
 
