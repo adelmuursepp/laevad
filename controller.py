@@ -3,7 +3,7 @@ from view import View
 
 class Controller:
   global i, kuljepikkus
-  i = 0
+  i = 0 # laevad arv, kui palju inimene tahab panna
   kuljepikkus = 10
   def __init__(self):
     self.view = View()    
@@ -11,13 +11,13 @@ class Controller:
     self.arvuti = []
     self.inimene = []
     
-    for i in range(kuljepikkus): # loob inimese ja arvuti mänguväljade ühe dimensiooni
+    for nr1 in range(kuljepikkus): # loob inimese ja arvuti mänguväljade ühe dimensiooni
       self.arvuti.append([])
       self.inimene.append([])
       
-      for j in range(kuljepikkus): # loob inimese ja arvuti mänguväljade teise dimensiooni
-        self.arvuti[i].append({'pomm': False, 'laev': False})
-        self.inimene[i].append({'pomm': False, 'laev': False})
+      for nr2 in range(kuljepikkus): # loob inimese ja arvuti mänguväljade teise dimensiooni
+        self.arvuti[nr1].append({'pomm': False, 'laev': False})
+        self.inimene[nr1].append({'pomm': False, 'laev': False})
         
         
     '''self.arvuti = [ [{'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False} , {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False},
