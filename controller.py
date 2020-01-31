@@ -6,20 +6,20 @@ class Controller:
   i = 0 # laevad arv, kui palju inimene tahab panna
   kuljepikkus = 10
   def __init__(self):
-    self.view = View()    
-    
+    self.view = View()
+
     self.arvuti = []
     self.inimene = []
-    
+
     for nr1 in range(kuljepikkus): # loob inimese ja arvuti mänguväljade ühe dimensiooni
       self.arvuti.append([])
       self.inimene.append([])
-      
+
       for nr2 in range(kuljepikkus): # loob inimese ja arvuti mänguväljade teise dimensiooni
         self.arvuti[nr1].append({'pomm': False, 'laev': False})
         self.inimene[nr1].append({'pomm': False, 'laev': False})
-        
-        
+
+
     '''self.arvuti = [ [{'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False} , {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False},
     {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False} , {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}],
     [{'pomm': False, 'laev': False}, {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False} , {'pomm': False, 'laev': False}, {'pomm': False, 'laev': False},
@@ -83,14 +83,15 @@ class Controller:
     self.genereeri_arvuti_laevad()
     # naita ruudustikku
     self.view.naitaruudustikku(self.inimene, self.arvuti)
-    running = True
+    mang_labi = False
 
     # inimene pommitab
-    while running == True:
+    while mang_labi == False:
       self.inimenepommitab()
     # if self.arvuti[x][y]['laev'] == True: # Kui oli laev, siis naita korvalolevaid laeva ruute
     #   self.uuri_umber(x,y)
       self.arvutipommitab()
+
   #def uuri_umber(self, x, y):
 
 
@@ -154,7 +155,8 @@ class Controller:
       self.view.naitaruudustikku(self.inimene, self.arvuti)
 
       if self.arvuti[x][y]['laev'] == True:
-
+        x1 = max(0, x-1)
+        x2 = min(10, x+1)
         self.inimenepommitab()
 
 
