@@ -19,7 +19,7 @@ class View:
     kuva1 = ''
     suurimarv = str(len(inimene) + 1)  # näitab suurima kohanumbriga rea numbrit
 
-    kuva1 += ' ' * (len(suurimarv) + 1)
+    kuva1 += ' ' * (len(suurimarv))
 
     for taht in range(len(inimene)): # teeb ülemisele reale tähed
       kuva1 += tahestik[taht % len(tahestik)] + ' '
